@@ -31,14 +31,6 @@ else
     exit 1
 fi
 
-java -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore TestListExamples > results.txt
-grep "Tests run: " results.txt > fails.txt
-grep "OK (" results.txt > success.txt
-if [[ "./fails.txt" == `find ./ -type f -empty` ]]
-then
-    echo "You Passed"
-    exit 1
-else
-    echo "You failed"
-    exit 1
-fi
+java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore TestListExamples
+
+
